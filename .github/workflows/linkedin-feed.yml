@@ -1,0 +1,35 @@
+# .github/workflows/linkedin-feed.yml
+name: Generate LinkedIn RSS Feed
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # Run every 2 hours
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  generate-feed:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install axios cheerio
+          
+      - name: Generate RSS feed
+        run: node generate-feed.js
+        
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add linkedin-feed.xml
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update LinkedIn RSS feed" && git push)
