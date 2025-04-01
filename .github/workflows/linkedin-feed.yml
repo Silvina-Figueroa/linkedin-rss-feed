@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm init -y
-          npm install axios cheerio
+          npm install cheerio
           
       - name: Generate RSS feed
         run: node generate-feed.js
