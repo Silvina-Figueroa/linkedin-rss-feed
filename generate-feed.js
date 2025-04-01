@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege
+const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege';
 const OUTPUT_FILE = 'linkedin-feed.xml';
 
 async function generateRSSFeed() {
