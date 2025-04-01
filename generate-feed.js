@@ -1,4 +1,3 @@
-// Simple LinkedIn RSS generator using pure Node.js
 const fs = require('fs');
 
 // Configuration
@@ -32,7 +31,6 @@ async function generateFeed() {
     LinkedIn check performed at ${timestamp}.
     
     This entry is generated automatically to check for LinkedIn updates.
-    Your Zapier workflow should trigger when this item appears in the feed.
     ]]></description>
   </item>
 </channel>
