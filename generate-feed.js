@@ -7,33 +7,33 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege/posts/';
 const OUTPUT_FILE = 'linkedin-feed.xml';
 
 async function generateRSSFeed() {
   try {
     console.log('Fetching LinkedIn page...');
     
-    // Fetch the LinkedIn page
-    const response = await axios.get(LINKEDIN_URL, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml'
-      }
-    });
+  const response = await axios.get(LINKEDIN_URL, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml'
+    },
+    responseType: 'text' // Ensure we get text response
+  });
     
     // Parse HTML
     const $ = cheerio.load(response.data);
     
     // Prepare RSS feed header
     let rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-<channel>
-  <title>LinkedIn Posts - Leverege</title>
-  <link>${LINKEDIN_URL}</link>
-  <description>Latest posts from Leverege on LinkedIn</description>
-  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-`;
+  <rss version="2.0">
+  <channel>
+    <title>LinkedIn Posts - Leverege</title>
+    <link>${LINKEDIN_URL}</link>
+    <description>Latest posts from Leverege on LinkedIn</description>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  `;
     
     // Find and extract posts
     let postCount = 0;
