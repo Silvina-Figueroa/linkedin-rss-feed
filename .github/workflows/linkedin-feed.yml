@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm init -y
-          npm install cheerio
+          npm install cheerio puppeteer-core
           
       - name: Generate RSS feed
         run: node generate-feed.js
