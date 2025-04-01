@@ -4,7 +4,7 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 
 // Configuration
-const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege/posts/';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege';
 const OUTPUT_FILE = 'linkedin-feed.xml';
 
 // Simple function to fetch a URL using the built-in https module
