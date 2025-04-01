@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 // Configuration
-const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege/';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/leverege/post';
 const OUTPUT_FILE = 'linkedin-feed.xml';
 
 // Generate a basic RSS feed that will work with Zapier
